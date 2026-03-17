@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online Image to PDF converter. High-quality, secure, and fast. Convert JPG, PNG to PDF entirely in your browser. No upload required.">
+    <meta name="keywords"
+        content="image to pdf, jpg to pdf, png to pdf, free pdf converter, unlimited pdf conversion, secure pdf tool">
+    <meta property="og:title" content="Imge2PDF - Fast & Secure Image to PDF Converter">
+    <meta property="og:description" content="Convert your images to PDF instantly and securely in your browser.">
+    <meta property="og:type" content="website">
+    <title>Imge2PDF - Premium Free Image to PDF Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="dark">
+    <div id="app">
+        <header>
+            <div class="logo">
+                <i data-lucide="file-image" class="logo-icon"></i>
+                <h1>Imge2PDF</h1>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <i data-lucide="sun" id="sun-icon"></i>
+                    <i data-lucide="moon" id="moon-icon" class="hidden"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Top Ad Slot -->
+        <div class="ad-container top-ad">
+            <div class="ad-placeholder">Ad Space (728x90)</div>
+        </div>
+
+        <main>
+            <section class="upload-section">
+                <div id="drop-zone" class="drop-zone">
+                    <div class="glass-morph drop-content">
+                        <i data-lucide="upload-cloud" class="upload-icon"></i>
+                        <h2>Drop your images here</h2>
+                        <p>Supports PNG, JPG, JPEG</p>
+                        <label for="file-input" class="btn btn-primary">
+                            <span>Browse Files</span>
+                            <input type="file" id="file-input" multiple accept="image/png, image/jpeg, image/jpg"
+                                hidden>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section id="preview-section" class="preview-section hidden">
+                <div class="section-header">
+                    <h3>Preview (<span id="file-count">0</span>)</h3>
+                    <div class="item-actions">
+                        <button id="clear-all" class="btn btn-danger">
+                            <i data-lucide="trash-2"></i>
+                            <span>Clear All</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="image-grid" class="image-grid">
+                    <!-- Images will be injected here -->
+                </div>
+                <div class="action-footer">
+                    <button id="convert-btn" class="btn btn-glow">
+                        <i data-lucide="file-type"></i>
+                        <span>Convert to PDF</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Bottom Ad Slot -->
+            <div class="ad-container bottom-ad">
+                <div class="ad-placeholder">Ad Space (Responsive)</div>
+            </div>
+
+            <!-- SEO Content Section -->
+            <section class="seo-content glass-morph">
+                <article>
+                    <h2>How to convert Image to PDF for free?</h2>
+                    <p>Our tool allows you to convert any image format including <strong>JPG, PNG, and JPEG</strong>
+                        into a single high-quality PDF document. Unlike other tools, Imge2PDF processes everything
+                        locally on your device, meaning your sensitive images never leave your computer.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h3>100% Secure</h3>
+                            <p>No uploads. No server-side storage. Your privacy is our priority.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>No Limits</h3>
+                            <p>Convert as many images as you want without any file size restrictions.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>High Quality</h3>
+                            <p>We preserve the original resolution of your images for the best PDF output.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <details>
+                            <summary>Is this tool free to use?</summary>
+                            <p>Yes, Imge2PDF is completely free and supported by minimal advertising to keep the service
+                                running.</p>
+                        </details>
+                        <details>
+                            <summary>Can I use it on mobile?</summary>
+                            <p>Absolutely! The web app is fully responsive and works perfectly on iPhone and Android
+                                browsers.</p>
+                        </details>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-links">
+                <a href="./privacy-policy.html">Privacy Policy</a>
+                <a href="./terms-of-service.html">Terms of Service</a>
+            </div>
+            <p>&copy; 2024 Imge2PDF. All processing happens in your browser.</p>
+        </footer>
+
+        <div id="loader" class="loader-overlay hidden">
+            <div class="loader-content">
+                <div class="spinner"></div>
+                <p>Generating PDF...</p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
