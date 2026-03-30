@@ -384,17 +384,28 @@ body.dark .ad-placeholder {
     color: rgba(255, 255, 255, 0.4);
 }
 
-.top-ad .ad-placeholder {
+.top-ad {
     width: 728px;
     height: 90px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
 }
 
-.bottom-ad .ad-placeholder {
+.bottom-ad {
     width: 100%;
-    height: 250px;
+    min-height: 250px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
 }
 
-/* SEO Content */
+@media (max-width: 768px) {
+    .top-ad {
+        width: 100%;
+        height: 100px;
+    }
+}
 .seo-content {
     margin-top: 4rem;
     line-height: 1.8;
