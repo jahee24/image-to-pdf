@@ -1,6 +1,6 @@
-# Imge2PDF - Fast & Secure Image to PDF Converter
+# Img2PDF - Fast & Secure Image to PDF Converter
 
-Imge2PDF is a premium, client-side web application that allows users to convert images (JPG, PNG, JPEG) into high-quality PDF documents. Designed with privacy and performance in mind, all processing happens directly in your browser.
+Img2PDF is a premium, client-side web application that allows users to convert images (JPG, PNG, JPEG) into high-quality PDF documents. Designed with privacy and performance in mind, all processing happens directly in your browser.
 
 ![Premium Tool Layout](/Users/hee/.gemini/antigravity/brain/cd2051cc-cd2d-4eac-8fcc-80f1f0888f41/dark_mode_initial_1773706571287.png)
 
