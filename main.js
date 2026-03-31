@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
-import { createIcons, FileImage, UploadCloud, Sun, Moon, Trash2, FileType } from 'lucide';
+import heic2any from 'heic2any';
+import { createIcons, FileImage, UploadCloud, Sun, Moon, Trash2, FileType, ShieldCheck, Zap, Infinity } from 'lucide';
 
 // Initialize Lucide Icons
 createIcons({
@@ -9,7 +10,10 @@ createIcons({
         Sun,
         Moon,
         Trash2,
-        FileType
+        FileType,
+        ShieldCheck,
+        Zap,
+        Infinity
     }
 });
 
@@ -79,15 +83,36 @@ function handleFiles(files) {
         alert('Please select valid image files (JPG, PNG, etc.)');
     }
 
-    validFiles.forEach(file => {
+    validFiles.forEach(async (file) => {
+        let fileToProcess = file;
+        let isHeic = file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif');
+
+        // Show individual loader if needed? For now, just process.
+        if (isHeic) {
+            try {
+                const convertedBlob = await heic2any({
+                    blob: file,
+                    toType: 'image/jpeg',
+                    quality: 0.8
+                });
+                // heic2any can return an array if multiple images are in the container
+                const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+                fileToProcess = new File([blob], file.name.replace(/\.[^/.]+$/, "") + ".jpg", { type: "image/jpeg" });
+            } catch (error) {
+                console.error('HEIC conversion failed:', error);
+                alert(`Failed to convert HEIC file: ${file.name}`);
+                return;
+            }
+        }
+
         const reader = new FileReader();
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(fileToProcess);
         reader.onload = () => {
             const fileData = {
                 id: Math.random().toString(36).substr(2, 9),
-                name: file.name,
+                name: fileToProcess.name,
                 data: reader.result,
-                type: file.type || 'image/jpeg' // Fallback for empty type
+                type: fileToProcess.type || 'image/jpeg'
             };
             uploadedFiles.push(fileData);
             updateUI();
@@ -169,8 +194,9 @@ convertBtn.addEventListener('click', async () => {
             const img = new Image();
             img.src = file.data;
 
-            await new Promise((resolve) => {
+            await new Promise((resolve, reject) => {
                 img.onload = resolve;
+                img.onerror = () => reject(new Error(`Failed to load image: ${file.name}`));
             });
 
             // Calculate dimensions to fit image without cropping

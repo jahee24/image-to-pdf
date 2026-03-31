@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "heic2any": "^0.0.4",
     "jspdf": "^4.2.0",
     "lucide": "^0.577.0"
   },
