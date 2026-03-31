@@ -187,7 +187,9 @@ convertBtn.addEventListener('click', async () => {
     loader.classList.remove('hidden');
 
     try {
-        const pdf = new jsPDF();
+        // Use 'mm' as unit for easier A4 comparison (A4 width is 210mm)
+        const pdf = new jsPDF('p', 'mm');
+        const targetWidth = 210; 
 
         for (let i = 0; i < uploadedFiles.length; i++) {
             const file = uploadedFiles[i];
@@ -202,17 +204,17 @@ convertBtn.addEventListener('click', async () => {
             // Calculate dimensions to fit image without cropping
             const imgWidth = img.width;
             const imgHeight = img.height;
+            const ratio = imgHeight / imgWidth;
+            const targetHeight = targetWidth * ratio;
 
-            // Add a new page with the same dimensions as the image
-            // Note: jsPDF uses 'pt' (points) by default, or you can specify 'px'
+            // Add a new page with the calculated dimensions
             if (i === 0) {
-                // For the first page, we need to set the format in the constructor or use setPage
-                // But it's easier to just add a page and delete the first empty one or re-initialize
+                // For the first page, we delete the default one and add our custom one
                 pdf.deletePage(1);
             }
 
-            pdf.addPage([imgWidth, imgHeight], imgWidth > imgHeight ? 'l' : 'p');
-            pdf.addImage(file.data, file.type.split('/')[1].toUpperCase(), 0, 0, imgWidth, imgHeight);
+            pdf.addPage([targetWidth, targetHeight], targetWidth > targetHeight ? 'l' : 'p');
+            pdf.addImage(file.data, file.type.split('/')[1].toUpperCase(), 0, 0, targetWidth, targetHeight);
         }
 
         pdf.save('converted.pdf');
