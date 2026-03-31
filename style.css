@@ -55,6 +55,30 @@ header {
     z-index: 100;
 }
 
+.header-nav {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0 2rem;
+}
+
+.header-nav a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 600px) {
+    .header-nav {
+        display: none;
+    }
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -406,6 +430,45 @@ body.dark .ad-placeholder {
         height: 100px;
     }
 }
+.pro-tips {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.pro-tips h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.pro-tips ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.pro-tips li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.pro-tips li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.feature-item i {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    width: 32px;
+    height: 32px;
+}
+
 .seo-content {
     margin-top: 4rem;
     line-height: 1.8;
