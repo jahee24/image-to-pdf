@@ -58,6 +58,7 @@ function preventDefaults(e) {
 dropZone.addEventListener('drop', handleDrop, false);
 fileInput.addEventListener('change', (e) => handleFiles(e.target.files), false);
 dropZone.addEventListener('click', () => {
+    console.log('--- Triggering file picker once ---');
     fileInput.click();
 });
 
